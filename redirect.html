@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instagram Launcher</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(
+        135deg,
+        #405DE6,
+        #5851DB,
+        #833AB4,
+        #C13584,
+        #E1306C,
+        #FD1D1D,
+        #F56040,
+        #FCAF45
+    );
+    overflow:hidden;
+}
+
+.card{
+    width:420px;
+    padding:40px;
+    text-align:center;
+    border-radius:25px;
+    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 0 40px rgba(0,0,0,0.3);
+    color:white;
+}
+
+.logo{
+    font-size:70px;
+    margin-bottom:10px;
+}
+
+h1{
+    margin-bottom:10px;
+    letter-spacing:2px;
+}
+
+.status{
+    opacity:.9;
+    margin-bottom:25px;
+}
+
+#countdown{
+    font-size:55px;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+.progress{
+    width:100%;
+    height:12px;
+    background:rgba(255,255,255,0.2);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.fill{
+    width:0%;
+    height:100%;
+    background:white;
+    transition:width 1s linear;
+}
+
+.loading{
+    margin-top:20px;
+    font-size:14px;
+    letter-spacing:2px;
+}
+
+.spinner{
+    width:60px;
+    height:60px;
+    margin:20px auto;
+    border:4px solid rgba(255,255,255,0.3);
+    border-top:4px solid white;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.footer{
+    margin-top:20px;
+    font-size:12px;
+    opacity:.8;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="logo">📸</div>
+
+    <h1>INSTAGRAM</h1>
+
+    <div class="status">
+        Secure Connection Established
+    </div>
+
+    <div class="spinner"></div>
+
+    <div id="countdown">3</div>
+
+    <div class="progress">
+        <div class="fill" id="fill"></div>
+    </div>
+
+    <div class="loading">
+        PREPARING REDIRECT...
+    </div>
+
+    <div class="footer">
+        Social Media Gateway v1.0
+    </div>
+
+</div>
+
+<script>
+
+let count = 5;
+const countdown = document.getElementById("countdown");
+const fill = document.getElementById("fill");
+
+countdown.innerHTML = count;
+
+const timer = setInterval(() => {
+
+    count--;
+
+    if(count >= 0){
+        countdown.innerHTML = count;
+    }
+
+    if(count === 4){
+        fill.style.width = "20%";
+    }
+
+    if(count === 3){
+        fill.style.width = "40%";
+    }
+
+    if(count === 2){
+        fill.style.width = "60%";
+    }
+
+    if(count === 1){
+        fill.style.width = "80%";
+    }
+
+    if(count === 0){
+        fill.style.width = "100%";
+    }
+
+},1000);
+
+setTimeout(() => {
+
+    window.location.href = "https://www.instagram.com";
+
+},5000);
+
+</script>
+</body>
+</html>
